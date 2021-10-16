@@ -1,0 +1,13 @@
+
+.modal_container{
+    display: block;
+    background: #575656;
+}
+.modal_container_card{
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    background-color: #fff;
+    opacity: 1;
+    display: inline-block;
+}

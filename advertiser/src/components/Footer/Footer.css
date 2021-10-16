@@ -1,0 +1,20 @@
+.bg-blue{
+    background-color: #425061;
+    padding: 2%;
+}
+.social_icon_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.social_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    color: #425061;
+    border-radius: 50%;
+}

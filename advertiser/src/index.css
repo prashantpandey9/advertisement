@@ -1,13 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	/* font:18px/28px; */
+	font-family: 'Montserrat', sans-serif!important;
+	/* -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale; */
+	background:#fff!important;
+	color:#313B47!important;
+	transition: all 1s ease;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* h1{
+	font-size:72px;
+}
+h2{
+	font-size:40px!important;
+}
+h3{
+	font-size:36px;
+}
+h4{
+	font-size:30px;
+}
+h5{
+	font-size:24px;
+}
+h6{
+	font-size:18px;
+} */
+
+::-webkit-scrollbar {
+	height: 5px;
+	width: 5px;
+	background: #2a2a2a;
+  }
+::-webkit-scrollbar-thumb {
+	
+	background: #969696;
+}
+  
+::-webkit-scrollbar-corner {
+background: #1A1A1A;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  /* border: 1px solid #fff; */
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 0px transparent inset;
+  box-shadow: 0 0 0px 0px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: white;
+}
+textarea{
+	height: 28px;
 }

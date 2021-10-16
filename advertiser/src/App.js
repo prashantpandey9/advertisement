@@ -1,20 +1,20 @@
-import React from 'react';
-import './App.css';
-
-const fetchTestDatas = function () {
-  fetch('/api/v1/advertiser')
-    .then(res => res.json())
-    .then((response) => { console.log("Test datas response", response); })
-    .catch((error) => { console.log("Error while fetching test datas", error); })
-}
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home/Home'
+import Signup from './pages/Signup/Signup'
+import Login from './pages/Login/Login'
 
 function App() {
   return (
-    <div className="App">
-      <button onClick={fetchTestDatas}>
-        Fetch Test Datas
-      </button>
-    </div>
+    <BrowserRouter>
+        <Switch>
+          <Route path="/register" component={Signup}/>
+          <Route path="/signin" component={Login}/>
+          <Route path="/" component={Home}/>
+          
+
+        </Switch>
+      </BrowserRouter>
   );
 }
 

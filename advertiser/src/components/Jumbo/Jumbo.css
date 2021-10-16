@@ -1,0 +1,25 @@
+.bg-green{
+    background: linear-gradient(123.75deg, #9fece1 1.87%, #00C8AA 120.46%);
+    height: 600px;
+}
+.jumbo{
+    align-items: center;
+    padding: 10%;
+    color: #4e5a69;
+    font-weight: 700;
+}
+.jumbo_img{
+    overflow: hidden;
+}
+.jumbo_img img{
+    transform: scale(2);
+}
+.main_heading{
+    font-size: 52px;
+    font-weight: 700;
+
+}
+.main_heading_small{
+    font-size: 32px;
+    font-weight: 400;
+}

@@ -1,0 +1,29 @@
+.title_heading{
+    color: #00C8AA;
+}
+.small_heading_bold{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5rem;
+}
+.serv_card{
+    background-color: #f2f2f2;
+    color: #00C8AA;
+    padding: 10%;
+    cursor: pointer;
+}
+
+.serv_card:hover{
+    background-color: #00C8AA;
+    color: #fff;
+    transform-origin: center;
+    transition: all .2s ease-out,left .2s ease-out,top .2s ease-out,border-radius .2s ease-out;
+    box-shadow: -7px -5px #7fe3d4, 5px 6px #7fe3d4;
+}
+.title_heading_card{
+    color: #00C8AA;
+}
+
+.serv_card:hover .title_heading_card{
+    color: #fff;
+}
