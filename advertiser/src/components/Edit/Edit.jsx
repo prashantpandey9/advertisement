@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import '../Register/Register.css'
 import axios from 'axios'
-import { requestLogin } from '../../api/request.api'
+import { requestAd } from '../../api/request.api'
 
-export default function Signin() {
+export default function Edit(props) {
+    const {id} = useParams();
     const [detail, setDetail] = useState({
-        email: '',
-        password: ''
+        title: '',
+        body: ''
     })
     
     const [redirect, setRedirect] = useState(false)
@@ -19,15 +20,14 @@ export default function Signin() {
         e.preventDefault();
         document.getElementById('loader-up').classList.toggle("loader-show")
         axios({
-            url: requestLogin,
-            method: 'POST',
-            data: {"email": detail.email, "password": detail.password},
+            url: `${requestAd}/${id}`,
+            method: 'PATCH',
+            data: {"title": detail.title, "body": detail.body},
           })
           .then(res=>{
             if (res.data.status==="SUCCESS"){
-                alert("Login successful!")
-                localStorage.setItem("auth", true)
-                localStorage.setItem("email", detail.email)
+                alert(res.data.message)
+
                 setInterval(()=>{
                     setRedirect(true)
                 }, 1000);
@@ -35,17 +35,18 @@ export default function Signin() {
             }
             else if (res.data.status==="ERROR"){
                 document.getElementById('loader-up').classList.toggle("loader-show")
-                return alert("Email/Password wrong.")
+                return alert("title/body wrong.")
             }
           })
           .catch(error => {
+            console.log(error)
             document.getElementById('loader-up').classList.toggle("loader-show")
             alert("Network Error");
             return
 
           });
     }
-    if (localStorage.getItem("auth")==="true"){
+    if (localStorage.getItem("auth")==="false"){
         return <Redirect to='/ads'/>
     }
     if (redirect){
@@ -53,18 +54,11 @@ export default function Signin() {
     }
     
     return (
-        <div className="modal_container p-5" id="Sign In">
+        <div className="modal_container p-5" id="Edit Advertisement">
             <div className="modal_container_card">
             <div className="row my-3">
                 <div className="col">
-                    <button className="btn button_custom m-3">Sign In</button>
-                </div>
-                <div className="col text-end">
-                    <button 
-                        className="fa fa-close button_custom bg-fff btn m-3"
-                    >
-                        
-                    </button>
+                    <button className="btn button_custom m-3">Edit Advertisement</button>
                 </div>
                 
             </div>
@@ -76,11 +70,11 @@ export default function Signin() {
                     <div className="col">
                         <input 
                         
-                            type="email" 
+                            type="title" 
                             className="form-control" 
-                            placeholder="E-mail" 
-                            name="email"
-                            value={detail.email}
+                            placeholder="Title" 
+                            name="title"
+                            value={detail.title}
                             onChange={handleChange}
                             autoComplete="off"
                      />
@@ -89,14 +83,14 @@ export default function Signin() {
                 </div>
                 <div className="row my-3">
                     <div className="col">
-                        <input 
-                            name="password"
-                            value={detail.password}
+                        <textarea 
+                            name="body"
+                            value={detail.body}
                             onChange={handleChange}
                             autoComplete="off"
-                            type="password" 
+                            type="body" 
                             className="form-control" 
-                            placeholder="Password" />
+                            placeholder="body" />
                     </div>
                     
                 </div>
@@ -105,23 +99,10 @@ export default function Signin() {
                     <button
                         type="submit" 
                         className="btn button_custom w-100"
-                    >Sign In</button>
+                    >Edit Advertisement</button>
                     </div>
                     
                 </div>
-                <div className="text-center">or</div>
-                <div className="row my-3">
-                    <div className="col">
-                        <Link to='/register'>
-                            <button 
-                            type="text"
-                            className="btn button_custom bg-fff w-100"
-                        > Sign In </button>
-                        </Link>
-                    </div>
-                    
-                </div>
-
             </form>
             </div>
         </div>

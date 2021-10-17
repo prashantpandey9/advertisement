@@ -43,7 +43,9 @@ export default function Register() {
 
           });
     }
-
+    if (localStorage.getItem("auth")==="true"){
+        return <Redirect to='/ads'/>
+    }
     if (redirect){
         return <Redirect to='/signin'/>
     }

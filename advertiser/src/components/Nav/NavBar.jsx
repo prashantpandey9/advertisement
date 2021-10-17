@@ -31,13 +31,17 @@ export default function NavBar() {
                 </span>
                 {localStorage.getItem("auth")==="true"?
                     <>
-                     <button 
-                        className="btn button_custom mx-2"
-                     > 
-                     <i className="fa fa-plus"></i>
-                     &nbsp;Publish Ad
-                    </button>
-                    <span className="navbarmain-item px-4 my-auto">Hi! {localStorage.getItem("email")}</span>
+                    <Link to="/add/ads">
+                        <button 
+                            className="btn button_custom mx-2"
+                        > 
+                        <i className="fa fa-plus"></i>
+                        &nbsp;Publish Ad
+                        </button>
+                    </Link>
+                    <span 
+                        style={{maxWidth: "255px"}}
+                        className="navbarmain-item px-4 my-auto">Hi! {localStorage.getItem("email")}</span>
                     <button 
                         className="btn button_custom bg-fff mx-2"
                         onClick={()=>{
