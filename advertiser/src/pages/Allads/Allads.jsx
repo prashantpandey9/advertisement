@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { requestAd } from '../../api/request.api'
+import { requestAd, getComments, postComments } from '../../api/request.api'
 import NavBar from '../../components/Nav/NavBar'
 import Footer from '../../components/Footer/Footer'
 import './Allads.css'
@@ -59,6 +59,64 @@ export default function Allads() {
 
           });    
     }
+
+    const [comment, setComment] = useState([])
+    const handleComment = (e)=>{
+        e.preventDefault();
+        axios({
+            url: `${getComments}/${e.target.name}`,
+            method: 'POST',
+            data: {"content": e.target.value, "user_email": localStorage.getItem("email")},
+          })
+          .then(res=>{
+            if (res.data.status==="SUCCESS"){
+                alert(res.data.message)
+                setComment(res.data.data)
+
+
+            }
+            else if (res.data.status==="ERROR"){
+                
+                return alert("No comments found!")
+            }
+          })
+          .catch(error => {
+            alert("Network Error");
+            return
+
+          }); 
+
+    }
+    const [commentcontent, setCommentcontent] = useState({"content": '', id: ''})
+    const commentChange = (e)=>{
+        setCommentcontent({...commentcontent, "content": e.target.value, "id": e.target.id})
+    }
+    const handleCommentsubmit=(e)=>{
+        e.preventDefault();
+        axios({
+            url: `${postComments}/${commentcontent.id}`,
+            method: 'POST',
+            data: {"content": commentcontent.content, "user_email": localStorage.getItem("email")},
+          })
+          .then(res=>{
+            if (res.data.status==="SUCCESS"){
+                alert(res.data.message)
+                setComment(res.data.data)
+
+
+            }
+            else if (res.data.status==="ERROR"){
+                
+                return alert("No comments found!")
+            }
+          })
+          .catch(error => {
+            console.log(error)
+            alert("Network Error");
+            return
+
+          });
+    }
     return (
         <div className="container-fluid p-0 m-0">
             <NavBar />
@@ -90,6 +148,46 @@ export default function Allads() {
                                         onClick={handleDelete}
                                     >
                                     </button>
+                                    <button
+                                        name={i.id}
+                                        className="btn button_custom bg-fff mx-2"
+                                        onClick={handleComment}
+                                    >
+                                        <i className="fa fa-comments"></i>
+                                        &nbsp;Show Comments
+                                    </button>
+                                    <form onSubmit={handleCommentsubmit}>
+                                        <div className="row my-3">
+                                            <div className="col">
+                                                <input 
+                                                
+                                                    type="text" 
+                                                    className="form-control" 
+                                                    placeholder="Add comment" 
+                                                    name="content"
+                                                    id={i.id}
+                                                    onChange={commentChange}
+                                                    autoComplete="off"
+                                            />
+                                            </div>
+                                            
+                                        </div>
+                                        <button
+                                            type="submit" 
+                                            className="btn button_custom bg-fff fa fa-plus"></button>
+                                    </form>
+                                    {comment.map((j,index)=>(
+                                        
+                                        j.advertisement_id===i.id?
+                                        <div className="comments my-2" key={index}>
+                                            <div className="small_heading_bold">Commented by: {j.user_email}</div>
+                                            <div className="small_heading_bold">Commented: {j.content}</div>
+                                            <div className="small_heading_bold">Commented at: {j.created_at? j.created_at.split("T")[1].split(":")[0]: "N/A"}: {j.created_at? j.created_at.split("T")[1].split(":")[1]: "N?A"}</div>
+                                            
+                        
+                                        </div>
+                                        : null
+                                    ))}
                                     
                                 </>
                                 : null

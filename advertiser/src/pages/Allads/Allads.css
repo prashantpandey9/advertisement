@@ -16,3 +16,10 @@
     font-size: 40px;
 
 }
+.comments{
+    font-weight: 600;
+    border-radius: 0 50px;
+    padding: 20px;
+    background: #f2f2f2;
+    color: #313B47;
+}
