@@ -1,7 +1,10 @@
 
 .modal_container{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #575656;
+
 }
 .modal_container_card{
     width: 400px;

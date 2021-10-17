@@ -9,7 +9,6 @@ export default function Login() {
             <NavBar />
             <div className="my-5"></div>
             <Signin />
-            <div className="my-5"></div>
             <Footer />
             
         </div>

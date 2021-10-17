@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../Register/Register.css'
 
 export default function Signin() {
     return (
-        <div className="modal_container" id="Sign In">
+        <div className="modal_container p-5" id="Sign In">
             <div className="modal_container_card">
             <div className="row my-3">
                 <div className="col">
@@ -41,7 +42,12 @@ export default function Signin() {
                 <div className="text-center">or</div>
                 <div className="row my-3">
                     <div className="col">
-                        <button className="btn button_custom bg-fff w-100"> Register </button>
+                        <Link to='/register'>
+                            <button 
+                            type="text"
+                            className="btn button_custom bg-fff w-100"
+                        > Sign In </button>
+                        </Link>
                     </div>
                     
                 </div>

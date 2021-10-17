@@ -1,9 +1,10 @@
 import React from 'react'
-// import './Register.css'
+import './Register.css'
+import {Link} from 'react-router-dom'
 
 export default function Register() {
     return (
-        <div className="modal_container" id="register">
+        <div className="modal_container p-5" id="register">
             <div className="modal_container_card">
             <div className="row my-3">
                 <div className="col">
@@ -41,10 +42,12 @@ export default function Register() {
                 <div className="text-center">or</div>
                 <div className="row my-3">
                     <div className="col">
-                        <button 
+                        <Link to='/signin'>
+                            <button 
                             type="text"
                             className="btn button_custom bg-fff w-100"
                         > Sign In </button>
+                        </Link>
                     </div>
                     
                 </div>
