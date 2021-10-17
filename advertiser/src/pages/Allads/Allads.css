@@ -1,0 +1,18 @@
+.ad_container_ad{
+    display: flex;
+    background-image: linear-gradient(123.75deg, #f2f2f2 1.87%, #fff 120.46%);
+    
+}
+.serv_card{
+    box-shadow: 0 20px 30px rgb(0 0 0 / 13%);
+    transition: .5s;
+}
+.ad_card{
+    border-radius: 40px 0px;
+    background: #fff;
+}
+.small_heading_add{
+    font-weight: 700;
+    font-size: 40px;
+
+}
