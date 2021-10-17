@@ -75,21 +75,22 @@ export default function Allads() {
                             <p>{i.created_at? i.created_at.split("T")[1].split(":")[0]: "N/A"}: {i.created_at? i.created_at.split("T")[1].split(":")[1]: "N?A"}
                                 &nbsp;&nbsp;
                                 {i.created_at.split("T")[0]}</p>
-                            
+                            <p className="title_heading_card ">Published by:{i.user.email}</p>
                             {localStorage.getItem("auth")==="true"?
                                 <>
                                     <Link to={`/edit/ads/${i.id}`}>
-                                    <button
-                                        className="btn button_custom bg-fff fa fa-pencil mx-2"
-                                    >
-                                    </button>
-                                    </Link>
-                                            <button
-                                                name={i.id}
-                                                className="btn button_custom bg-fff fa fa-trash mx-2"
-                                                onClick={handleDelete}
+                                        <button
+                                            className="btn button_custom bg-fff fa fa-pencil mx-2"
                                         >
                                         </button>
+                                    </Link>
+                                    <button
+                                        name={i.id}
+                                        className="btn button_custom bg-fff fa fa-trash mx-2"
+                                        onClick={handleDelete}
+                                    >
+                                    </button>
+                                    
                                 </>
                                 : null
                             }

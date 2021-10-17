@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../Register/Register.css'
 import axios from 'axios'
-import { requestAd } from '../../api/request.api'
+import { createAd } from '../../api/request.api'
 
 export default function Publish() {
     const [detail, setDetail] = useState({
         title: '',
-        body: ''
+        body: '',
+        is_published: true
     })
     
     const [redirect, setRedirect] = useState(false)
@@ -19,9 +20,9 @@ export default function Publish() {
         e.preventDefault();
         document.getElementById('loader-up').classList.toggle("loader-show")
         axios({
-            url: requestAd,
+            url: `${createAd}/${localStorage.getItem("id")}`,
             method: 'POST',
-            data: {"title": detail.title, "body": detail.body},
+            data: {"title": detail.title, "body": detail.body, "is_published": detail.is_published},
           })
           .then(res=>{
             if (res.data.status==="SUCCESS"){
@@ -89,6 +90,21 @@ export default function Publish() {
                             type="body" 
                             className="form-control" 
                             placeholder="body" />
+                    </div>
+                    
+                </div>
+                <div className="row my-3">
+                    <div className="col">
+                        <input 
+                            name="is_published"
+                            defaultChecked={detail.is_published}
+                            onChange={handleChange}
+                            autoComplete="off"
+                            type="checkbox"  
+                            id="is"
+                            />
+                        <label for="is">&nbsp;Publish it.</label>
+                        
                     </div>
                     
                 </div>

@@ -28,6 +28,7 @@ export default function Signin() {
                 alert("Login successful!")
                 localStorage.setItem("auth", true)
                 localStorage.setItem("email", detail.email)
+                localStorage.setItem("id", res.data.data.id)
                 setInterval(()=>{
                     setRedirect(true)
                 }, 1000);
