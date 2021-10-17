@@ -12,7 +12,7 @@ https://github.com/prashantpandey9/advertisement.git
 - ```yarn start```
 
 ### Backend Setup
-- Cline backend repo
+- Clone backend repo
 https://github.com/prashantpandey9/Task-backend.git
 
 - ```bundle install```
